@@ -90,22 +90,22 @@ export const removeLike = (photoId, likerId) => {
 
 // COMMENT SYSTEM
 
-// export const addComment = async (photoId, comment) => {
-//     try {
-//       const { data } = await axios.post(`${process.env.REACT_APP_BASE_URL}/photos/${photoId}/comments`, comment);
-//       return data;
-//     } catch (error) {
-//       console.error('Error adding comment:', error.response ? error.response.data : error.message);
-//       throw error; // rethrow the error so it can be handled by the caller if needed
-//     }
-//   };
+export const addComment = async (photoId, comment) => {
+    try {
+      const { data } = await axios.post(`${process.env.REACT_APP_BASE_URL}/photos/${photoId}/comments`, comment);
+      return data;
+    } catch (error) {
+      console.error('Error adding comment:', error.response ? error.response.data : error.message);
+      throw error; // rethrow the error so it can be handled by the caller if needed
+    }
+  };
   
-//   export const getComments = async (photoId) => {
-//     try {
-//       const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/photos/${photoId}/comments`);
-//       return data;
-//     } catch (error) {
-//       console.error('Error fetching comments:', error.response ? error.response.data : error.message);
-//       throw error; // rethrow the error so it can be handled by the caller if needed
-//     }
-//   };
+  export const getComments = async (photoId) => {
+    try {
+      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/photos/${photoId}/comments`);
+      return data;
+    } catch (error) {
+      console.error('Error fetching comments:', error.response ? error.response.data : error.message);
+      throw error; // rethrow the error so it can be handled by the caller if needed
+    }
+  };

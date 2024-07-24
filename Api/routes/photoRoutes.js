@@ -21,7 +21,7 @@ router.route('/:photoId/likes/:likerId').put(addLike);
 
 router.route('/:photoId/likes/:likerId').delete(deleteLike);
 
-// router.route('/:photoId/comments').post(addComment); 
-// router.route('/:photoId/comments').get(getComments); 
+router.route('/:photoId/comments').post(addComment); 
+router.route('/:photoId/comments').get(getComments); 
 
 module.exports = router;

@@ -1,5 +1,4 @@
 const Photo = require('../models/Photo');
-// const Comment = require('../models/Comment'); // تأكد من أنك قمت بإنشاء نموذج التعليقات
 
 exports.getAllPhotos = async (req, res) => {
     try {
@@ -193,49 +192,49 @@ exports.deleteLike = async (req, res) => {
 
 // COMMENT SYSTEM
 
-// exports.addComment = async (req, res) => {
-//     try {
-//         const { photoId } = req.params;
-//         const { userId, text } = req.body;
+exports.addComment = async (req, res) => {
+    try {
+        const { photoId } = req.params;
+        const { userId, text } = req.body;
 
-//         const photo = await Photo.findById(photoId);
+        const photo = await Photo.findById(photoId);
 
-//         if (!photo) {
-//             return res.status(404).json({
-//                 status: 'failed',
-//                 message: 'Photo not found'
-//             });
-//         }
+        if (!photo) {
+            return res.status(404).json({
+                status: 'failed',
+                message: 'Photo not found'
+            });
+        }
 
-//         const comment = {
-//             userId,
-//             text,
-//             date: new Date()
-//         };
+        const comment = {
+            userId,
+            text,
+            date: new Date()
+        };
 
-//         photo.comments.push(comment);
-//         await photo.save();
+        photo.comments.push(comment);
+        await photo.save();
 
-//         res.status(200).json({
-//             status: 'success',
-//             comment
-//         });
-//     } catch (error) {
-//         res.status(500).json({
-//             status: 'failed',
-//             error
-//         });
-//     }
-// };
+        res.status(200).json({
+            status: 'success',
+            comment
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: 'failed',
+            error
+        });
+    }
+};
 
 
-// exports.getComments = async (req, res) => {
-//     const { photoId } = req.params;
+exports.getComments = async (req, res) => {
+    const { photoId } = req.params;
 
-//     try {
-//         const comments = await Comment.find({ photo: photoId }).populate('user', 'username');
-//         res.status(200).json(comments);
-//     } catch (error) {
-//         res.status(500).json({ message: 'Error getting comments', error });
-//     }
-// };
+    try {
+        const comments = await Comment.find({ photo: photoId }).populate('user', 'username');
+        res.status(200).json(comments);
+    } catch (error) {
+        res.status(500).json({ message: 'Error getting comments', error });
+    }
+};
